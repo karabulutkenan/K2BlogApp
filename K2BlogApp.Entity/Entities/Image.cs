@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace K2BlogApp.Entity.Entities
 {
-    public class Image
+    public class Image : EntityBase
     {
         public Guid Id { get; set; }
         public string FileName { get; set; }

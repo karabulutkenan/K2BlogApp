@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace K2BlogApp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230818103532_Initial")]
+    [Migration("20230818123257_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -61,7 +61,8 @@ namespace K2BlogApp.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
@@ -109,7 +110,7 @@ namespace K2BlogApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("K2BlogApp.Entity.Entities.Image", b =>
@@ -128,7 +129,7 @@ namespace K2BlogApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("K2BlogApp.Entity.Entities.Article", b =>

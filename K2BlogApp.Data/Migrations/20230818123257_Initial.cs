@@ -15,7 +15,7 @@ namespace K2BlogApp.Data.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
@@ -30,12 +30,12 @@ namespace K2BlogApp.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
@@ -44,7 +44,7 @@ namespace K2BlogApp.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -53,7 +53,7 @@ namespace K2BlogApp.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
-                    Title = table.Column<string>(type: "longtext", nullable: false),
+                    Title = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
                     Content = table.Column<string>(type: "longtext", nullable: true),
                     CategoryId = table.Column<Guid>(type: "char(36)", nullable: false),
                     ViewCount = table.Column<int>(type: "int", nullable: false),
@@ -70,15 +70,15 @@ namespace K2BlogApp.Data.Migrations
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_Category_CategoryId",
+                        name: "FK_Articles_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Articles_Image_ImageId",
+                        name: "FK_Articles_Images_ImageId",
                         column: x => x.ImageId,
-                        principalTable: "Image",
+                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -102,10 +102,10 @@ namespace K2BlogApp.Data.Migrations
                 name: "Articles");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Images");
         }
     }
 }

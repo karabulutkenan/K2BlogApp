@@ -9,7 +9,7 @@ namespace K2BlogApp.Core.Entities
     public abstract class EntityBase : IEntityBase
     {
         public virtual Guid Id { get; set; } = Guid.NewGuid();
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public string? ModifiedBy { get; set; }
         public string? DeletedBy { get; set; }
         public DateTime CreatedDate { get; set; }= DateTime.Now;
