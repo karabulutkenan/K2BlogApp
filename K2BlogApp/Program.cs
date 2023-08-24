@@ -1,10 +1,12 @@
 using K2BlogApp.Data.Context;
+using K2BlogApp.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.LoadDataLayerExtension(builder.Configuration);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(
