@@ -66,7 +66,6 @@ namespace K2BlogApp.Data.Repostroies.Concretes
         public async Task DeleteAsync(T entity)
         {
             await Task.Run(() => Table.Remove(entity));
-            
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
@@ -78,5 +77,7 @@ namespace K2BlogApp.Data.Repostroies.Concretes
         {
             return await Table.CountAsync(predicate);
         }
+
+       
     }
 }
